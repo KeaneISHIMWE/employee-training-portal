@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Employee Training Portal",
   description: "Comprehensive training platform for employee development and skill enhancement",
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
