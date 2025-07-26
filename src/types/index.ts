@@ -79,9 +79,9 @@ export interface CoursesApiResponse extends ApiResponse<Course[]> {
   limit: number;
 }
 
-export interface CourseApiResponse extends ApiResponse<Course> {}
+export type CourseApiResponse = ApiResponse<Course>;
 
-export interface EnrollmentApiResponse extends ApiResponse<Enrollment> {}
+export type EnrollmentApiResponse = ApiResponse<Enrollment>;
 
 // Search and filter interfaces
 export interface SearchParams {
@@ -161,7 +161,7 @@ export interface EnrollmentFormData {
 export interface AppError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
   timestamp: Date;
 }
 

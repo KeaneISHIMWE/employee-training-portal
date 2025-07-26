@@ -1,6 +1,24 @@
 import { Course } from '@/types';
 import { DataService, sampleCourses } from './sampleData';
 
+// MongoDB document interface
+interface MongoDbCourse {
+  _id?: { toString(): string };
+  id?: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  duration: string;
+  instructor: string;
+  prerequisites?: string[];
+  category: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced';
+  imageUrl?: string;
+  tags?: string[];
+  createdAt: string | Date;
+  updatedAt: string | Date;
+}
+
 // Database service that handles both MongoDB and fallback JSON data
 export class DatabaseService {
   private static useMongoDb = false;
@@ -39,10 +57,19 @@ export class DatabaseService {
       try {
         const { getDatabase } = await import('./mongodb');
         const db = await getDatabase();
-        const courses = await db.collection('courses').find({}).toArray();
-        return courses.map(course => ({
-          ...course,
-          id: course._id.toString(),
+        const courses = await db.collection('courses').find({}).toArray() as unknown as MongoDbCourse[];
+        return courses.map((course) => ({
+          id: course._id?.toString() || course.id || '',
+          title: course.title,
+          shortDescription: course.shortDescription,
+          fullDescription: course.fullDescription,
+          duration: course.duration,
+          instructor: course.instructor,
+          prerequisites: course.prerequisites || [],
+          category: course.category,
+          level: course.level,
+          imageUrl: course.imageUrl || '',
+          tags: course.tags || [],
           createdAt: new Date(course.createdAt),
           updatedAt: new Date(course.updatedAt)
         }));
@@ -61,17 +88,26 @@ export class DatabaseService {
         const { ObjectId } = await import('mongodb');
         const db = await getDatabase();
         
-        let course;
+        let course: MongoDbCourse | null;
         if (ObjectId.isValid(id)) {
-          course = await db.collection('courses').findOne({ _id: new ObjectId(id) });
+          course = await db.collection('courses').findOne({ _id: new ObjectId(id) }) as unknown as MongoDbCourse | null;
         } else {
-          course = await db.collection('courses').findOne({ id: id });
+          course = await db.collection('courses').findOne({ id: id }) as unknown as MongoDbCourse | null;
         }
         
         if (course) {
           return {
-            ...course,
-            id: course._id?.toString() || course.id,
+            id: course._id?.toString() || course.id || '',
+            title: course.title,
+            shortDescription: course.shortDescription,
+            fullDescription: course.fullDescription,
+            duration: course.duration,
+            instructor: course.instructor,
+            prerequisites: course.prerequisites || [],
+            category: course.category,
+            level: course.level,
+            imageUrl: course.imageUrl || '',
+            tags: course.tags || [],
             createdAt: new Date(course.createdAt),
             updatedAt: new Date(course.updatedAt)
           };
@@ -105,11 +141,20 @@ export class DatabaseService {
             { instructor: searchRegex },
             { tags: { $in: [searchRegex] } }
           ]
-        }).toArray();
+        }).toArray() as unknown as MongoDbCourse[];
 
-        return courses.map(course => ({
-          ...course,
-          id: course._id.toString(),
+        return courses.map((course) => ({
+          id: course._id?.toString() || course.id || '',
+          title: course.title,
+          shortDescription: course.shortDescription,
+          fullDescription: course.fullDescription,
+          duration: course.duration,
+          instructor: course.instructor,
+          prerequisites: course.prerequisites || [],
+          category: course.category,
+          level: course.level,
+          imageUrl: course.imageUrl || '',
+          tags: course.tags || [],
           createdAt: new Date(course.createdAt),
           updatedAt: new Date(course.updatedAt)
         }));
@@ -128,11 +173,20 @@ export class DatabaseService {
         const db = await getDatabase();
         const courses = await db.collection('courses').find({
           category: new RegExp(`^${category}$`, 'i')
-        }).toArray();
+        }).toArray() as unknown as MongoDbCourse[];
 
-        return courses.map(course => ({
-          ...course,
-          id: course._id.toString(),
+        return courses.map((course) => ({
+          id: course._id?.toString() || course.id || '',
+          title: course.title,
+          shortDescription: course.shortDescription,
+          fullDescription: course.fullDescription,
+          duration: course.duration,
+          instructor: course.instructor,
+          prerequisites: course.prerequisites || [],
+          category: course.category,
+          level: course.level,
+          imageUrl: course.imageUrl || '',
+          tags: course.tags || [],
           createdAt: new Date(course.createdAt),
           updatedAt: new Date(course.updatedAt)
         }));

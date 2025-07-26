@@ -51,7 +51,7 @@ export default function Home() {
         title: 'Enrollment Successful',
         message: 'You have been enrolled in the course successfully!',
       }));
-    } catch (error) {
+    } catch {
       dispatch(showErrorNotification({
         title: 'Enrollment Failed',
         message: 'Failed to enroll in the course. Please try again.',
@@ -66,7 +66,7 @@ export default function Home() {
         title: 'Unenrollment Successful',
         message: 'You have been unenrolled from the course.',
       }));
-    } catch (error) {
+    } catch {
       dispatch(showErrorNotification({
         title: 'Unenrollment Failed',
         message: 'Failed to unenroll from the course. Please try again.',
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-2 mb-4">
             {searchQuery && (
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
-                Search: "{searchQuery}"
+                Search: &ldquo;{searchQuery}&rdquo;
                 <button
                   onClick={() => dispatch(setSearchQuery(''))}
                   className="ml-2 text-blue-600 hover:text-blue-800"

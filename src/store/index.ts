@@ -3,7 +3,6 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import coursesReducer from './slices/coursesSlice';
 import enrollmentReducer from './slices/enrollmentSlice';
 import uiReducer from './slices/uiSlice';
-import { RootState } from '@/types';
 
 // Configure the store
 export const store = configureStore({

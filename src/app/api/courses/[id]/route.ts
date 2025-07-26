@@ -4,10 +4,10 @@ import { CourseApiResponse } from '@/types';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const courseId = params.id;
+    const { id: courseId } = await params;
     const course = await DatabaseService.getCourseById(courseId);
 
     if (!course) {

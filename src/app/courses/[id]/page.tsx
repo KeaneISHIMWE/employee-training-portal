@@ -15,7 +15,7 @@ export default function CourseDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const courseId = params.id as string;
+  const courseId = Array.isArray(params.id) ? params.id[0] : params.id as string;
 
   const { courses, loading: coursesLoading, error: coursesError } = useAppSelector((state) => state.courses);
   const { enrolledCourses, loading: enrollmentLoading } = useAppSelector((state) => state.enrollment);
@@ -50,7 +50,7 @@ export default function CourseDetailsPage() {
         title: 'Enrollment Successful',
         message: `You have been enrolled in "${course?.title}" successfully!`,
       }));
-    } catch (error) {
+    } catch {
       dispatch(showErrorNotification({
         title: 'Enrollment Failed',
         message: 'Failed to enroll in the course. Please try again.',
@@ -65,7 +65,7 @@ export default function CourseDetailsPage() {
         title: 'Unenrollment Successful',
         message: `You have been unenrolled from "${course?.title}".`,
       }));
-    } catch (error) {
+    } catch {
       dispatch(showErrorNotification({
         title: 'Unenrollment Failed',
         message: 'Failed to unenroll from the course. Please try again.',

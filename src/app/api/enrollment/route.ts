@@ -5,7 +5,7 @@ import { EnrollmentApiResponse, ApiResponse } from '@/types';
 // In a real application, this would be stored in a database
 let enrolledCourses: string[] = [];
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const response: ApiResponse<string[]> = {
       success: true,

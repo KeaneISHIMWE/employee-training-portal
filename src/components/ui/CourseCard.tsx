@@ -10,9 +10,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   onUnenroll,
   className = '',
 }) => {
-  const handleEnrollClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleEnrollClick = () => {
     if (isEnrolled && onUnenroll) {
       onUnenroll(course.id);
     } else if (!isEnrolled && onEnroll) {
