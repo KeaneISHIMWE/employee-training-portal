@@ -1,6 +1,9 @@
 # Employee Training Portal
 
 A comprehensive training platform built with Next.js, TypeScript, and Redux Toolkit that allows employees to browse, search, and enroll in training courses.
+## Live URL 
+
+https://employee-training-portal-ua4j.vercel.app/
 
 ## Features
 
