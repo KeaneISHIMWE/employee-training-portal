@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CourseCardProps } from '@/types';
 import Button from './Button';
 
@@ -36,10 +37,14 @@ const CourseCard: React.FC<CourseCardProps> = ({
       <Link href={`/courses/${course.id}`} aria-label={`View details for ${course.title}`}>
         <div className="cursor-pointer">
           {/* Course Image */}
-          <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center" role="img" aria-label="Course thumbnail">
-            <div className="text-white text-6xl" aria-hidden="true">
-              📚
-            </div>
+          <div className="h-48 relative overflow-hidden">
+            <Image
+              src={course.imageUrl}
+              alt={`${course.title} course thumbnail`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
 
           {/* Course Content */}

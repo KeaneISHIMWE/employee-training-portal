@@ -40,23 +40,29 @@ const uiSlice = createSlice({
       state.notifications = [];
     },
     showSuccessNotification: (state, action: PayloadAction<{ title: string; message: string }>) => {
+      // Clear existing notifications to show only the latest one
+      state.notifications = [];
+
       const notification: Notification = {
         id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
         type: 'success',
         title: action.payload.title,
         message: action.payload.message,
-        duration: 5000,
+        duration: 4000,
         createdAt: new Date().toISOString(),
       };
       state.notifications.push(notification);
     },
     showErrorNotification: (state, action: PayloadAction<{ title: string; message: string }>) => {
+      // Clear existing notifications to show only the latest one
+      state.notifications = [];
+
       const notification: Notification = {
         id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
         type: 'error',
         title: action.payload.title,
         message: action.payload.message,
-        duration: 7000,
+        duration: 6000,
         createdAt: new Date().toISOString(),
       };
       state.notifications.push(notification);

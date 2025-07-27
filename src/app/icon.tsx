@@ -13,8 +13,9 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
-          background: '#3B82F6',
+          fontSize: 16,
+          fontWeight: 'bold',
+          background: 'linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -24,7 +25,7 @@ export default function Icon() {
           borderRadius: '4px',
         }}
       >
-        🎓
+        ETP
       </div>
     ),
     {

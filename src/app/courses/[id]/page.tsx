@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { fetchCourseById } from '@/store/slices/coursesSlice';
 import { addEnrolledCourse, removeEnrolledCourse } from '@/store/slices/enrollmentSlice';
@@ -98,7 +99,11 @@ export default function CourseDetailsPage() {
     return (
       <Layout>
         <div className="text-center py-12">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Course</h2>
           <p className="text-gray-600 mb-4">{coursesError}</p>
           <div className="space-x-4">
@@ -134,8 +139,14 @@ export default function CourseDetailsPage() {
         {/* Course Header */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
           {/* Course Image */}
-          <div className="h-64 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-            <div className="text-white text-8xl">📚</div>
+          <div className="h-64 relative overflow-hidden">
+            <Image
+              src={course.imageUrl}
+              alt={`${course.title} course image`}
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
 
           <div className="p-8">
@@ -336,7 +347,10 @@ export default function CourseDetailsPage() {
                   }}
                   className="flex-1"
                 >
-                  📋 Copy Link
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy Link
                 </Button>
               </div>
             </div>

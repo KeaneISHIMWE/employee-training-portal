@@ -1,0 +1,28 @@
+<svg width="400" height="240" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="240" fill="url(#gradient6)"/>
+  <!-- Cloud -->
+  <path d="M120 140C110 140 100 130 100 120C100 110 110 100 120 100C125 90 135 85 145 85C155 85 165 90 170 100C180 100 190 110 190 120C190 130 180 140 170 140H120Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M220 160C210 160 200 150 200 140C200 130 210 120 220 120C225 110 235 105 245 105C255 105 265 110 270 120C280 120 290 130 290 140C290 150 280 160 270 160H220Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M160 180C150 180 140 170 140 160C140 150 150 140 160 140C165 130 175 125 185 125C195 125 205 130 210 140C220 140 230 150 230 160C230 170 220 180 210 180H160Z" fill="#FFFFFF" opacity="0.9"/>
+  <!-- Server Racks -->
+  <rect x="300" y="100" width="30" height="80" rx="4" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="305" y="110" width="20" height="8" rx="2" fill="#F59E0B"/>
+  <rect x="305" y="125" width="20" height="8" rx="2" fill="#10B981"/>
+  <rect x="305" y="140" width="20" height="8" rx="2" fill="#3B82F6"/>
+  <rect x="305" y="155" width="20" height="8" rx="2" fill="#EF4444"/>
+  <!-- Connection Lines -->
+  <path d="M190 130L300 130" stroke="#FFFFFF" stroke-width="2" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M230 170L300 150" stroke="#FFFFFF" stroke-width="2" opacity="0.6" stroke-dasharray="5,5"/>
+  <!-- AWS Logo Area -->
+  <rect x="60" y="100" width="40" height="20" rx="4" fill="#FF9900"/>
+  <text x="80" y="113" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">AWS</text>
+  <!-- Title -->
+  <text x="200" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Cloud Computing</text>
+  <text x="200" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" opacity="0.8">Amazon Web Services</text>
+  <defs>
+    <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

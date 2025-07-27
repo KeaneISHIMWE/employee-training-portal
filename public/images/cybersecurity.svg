@@ -1,0 +1,29 @@
+<svg width="400" height="240" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="240" fill="url(#gradient5)"/>
+  <!-- Shield -->
+  <path d="M200 80L160 100L160 140C160 160 180 180 200 180C220 180 240 160 240 140L240 100L200 80Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M200 90L175 105L175 135C175 150 187.5 165 200 165C212.5 165 225 150 225 135L225 105L200 90Z" fill="#EF4444"/>
+  <!-- Lock -->
+  <rect x="190" y="125" width="20" height="25" rx="2" fill="#FFFFFF"/>
+  <circle cx="200" cy="120" r="8" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- Network Nodes -->
+  <circle cx="120" cy="120" r="8" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="280" cy="120" r="8" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="120" cy="180" r="8" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="280" cy="180" r="8" fill="#FFFFFF" opacity="0.7"/>
+  <!-- Connections -->
+  <line x1="128" y1="120" x2="160" y2="120" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+  <line x1="240" y1="120" x2="272" y2="120" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+  <line x1="120" y1="128" x2="120" y2="172" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+  <line x1="280" y1="128" x2="280" y2="172" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+  <line x1="128" y1="180" x2="272" y2="180" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+  <!-- Title -->
+  <text x="200" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Cybersecurity</text>
+  <text x="200" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" opacity="0.8">Network Protection &amp; Security</text>
+  <defs>
+    <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

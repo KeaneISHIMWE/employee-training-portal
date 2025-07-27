@@ -53,9 +53,34 @@ export const fetchEnrolledCourses = createAsyncThunk(
   }
 );
 
+// Helper function to get enrolled courses from localStorage
+const getStoredEnrolledCourses = (): string[] => {
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = localStorage.getItem('enrolledCourses');
+      return stored ? JSON.parse(stored) : [];
+    } catch (error) {
+      console.error('Error reading enrolled courses from localStorage:', error);
+      return [];
+    }
+  }
+  return [];
+};
+
+// Helper function to save enrolled courses to localStorage
+const saveEnrolledCourses = (courses: string[]): void => {
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem('enrolledCourses', JSON.stringify(courses));
+    } catch (error) {
+      console.error('Error saving enrolled courses to localStorage:', error);
+    }
+  }
+};
+
 // Initial state
 const initialState: EnrollmentState = {
-  enrolledCourses: [],
+  enrolledCourses: getStoredEnrolledCourses(),
   loading: false,
   error: null,
 };
@@ -72,15 +97,18 @@ const enrollmentSlice = createSlice({
     addEnrolledCourse: (state, action: PayloadAction<string>) => {
       if (!state.enrolledCourses.includes(action.payload)) {
         state.enrolledCourses.push(action.payload);
+        saveEnrolledCourses(state.enrolledCourses);
       }
     },
     removeEnrolledCourse: (state, action: PayloadAction<string>) => {
       state.enrolledCourses = state.enrolledCourses.filter(
         courseId => courseId !== action.payload
       );
+      saveEnrolledCourses(state.enrolledCourses);
     },
     setEnrolledCourses: (state, action: PayloadAction<string[]>) => {
       state.enrolledCourses = action.payload;
+      saveEnrolledCourses(state.enrolledCourses);
     },
   },
   extraReducers: (builder) => {
@@ -126,7 +154,12 @@ const enrollmentSlice = createSlice({
       })
       .addCase(fetchEnrolledCourses.fulfilled, (state, action) => {
         state.loading = false;
-        state.enrolledCourses = action.payload;
+        // Merge server data with local data, prioritizing local data
+        const serverCourses = action.payload || [];
+        const localCourses = state.enrolledCourses;
+        const mergedCourses = Array.from(new Set([...localCourses, ...serverCourses]));
+        state.enrolledCourses = mergedCourses;
+        saveEnrolledCourses(mergedCourses);
       })
       .addCase(fetchEnrolledCourses.rejected, (state, action) => {
         state.loading = false;

@@ -11,7 +11,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Basic mathematics', 'Computer literacy'],
     category: 'Data Science',
     level: 'Beginner',
-    imageUrl: '/images/data-analytics.jpg',
+    imageUrl: '/images/data-analytics.svg',
     tags: ['analytics', 'data', 'visualization', 'statistics'],
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2024-01-15')
@@ -26,7 +26,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Basic JavaScript knowledge', 'HTML/CSS fundamentals'],
     category: 'Programming',
     level: 'Advanced',
-    imageUrl: '/images/javascript.jpg',
+    imageUrl: '/images/javascript.svg',
     tags: ['javascript', 'programming', 'web development', 'es6'],
     createdAt: new Date('2024-01-10'),
     updatedAt: new Date('2024-01-20')
@@ -41,7 +41,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Basic computer skills'],
     category: 'Marketing',
     level: 'Beginner',
-    imageUrl: '/images/digital-marketing.jpg',
+    imageUrl: '/images/digital-marketing.svg',
     tags: ['marketing', 'seo', 'social media', 'advertising'],
     createdAt: new Date('2024-01-05'),
     updatedAt: new Date('2024-01-25')
@@ -56,7 +56,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Work experience in project environments'],
     category: 'Management',
     level: 'Intermediate',
-    imageUrl: '/images/project-management.jpg',
+    imageUrl: '/images/project-management.svg',
     tags: ['project management', 'agile', 'scrum', 'leadership'],
     createdAt: new Date('2024-01-12'),
     updatedAt: new Date('2024-01-18')
@@ -71,7 +71,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Basic networking knowledge', 'IT fundamentals'],
     category: 'Security',
     level: 'Intermediate',
-    imageUrl: '/images/cybersecurity.jpg',
+    imageUrl: '/images/cybersecurity.svg',
     tags: ['security', 'cybersecurity', 'networking', 'compliance'],
     createdAt: new Date('2024-01-08'),
     updatedAt: new Date('2024-01-22')
@@ -86,7 +86,7 @@ export const sampleCourses: Course[] = [
     prerequisites: ['Basic IT knowledge', 'Linux fundamentals'],
     category: 'Cloud Computing',
     level: 'Intermediate',
-    imageUrl: '/images/aws-cloud.jpg',
+    imageUrl: '/images/aws-cloud.svg',
     tags: ['aws', 'cloud', 'infrastructure', 'devops'],
     createdAt: new Date('2024-01-20'),
     updatedAt: new Date('2024-01-20')

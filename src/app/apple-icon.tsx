@@ -13,7 +13,8 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          fontSize: 120,
+          fontSize: 60,
+          fontWeight: 'bold',
           background: 'linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%)',
           width: '100%',
           height: '100%',
@@ -24,7 +25,7 @@ export default function AppleIcon() {
           borderRadius: '20px',
         }}
       >
-        🎓
+        ETP
       </div>
     ),
     {

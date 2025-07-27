@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { fetchCourses, setSearchQuery, setSelectedCategory } from '@/store/slices/coursesSlice';
-import { addEnrolledCourse, removeEnrolledCourse } from '@/store/slices/enrollmentSlice';
+import { addEnrolledCourse, removeEnrolledCourse, fetchEnrolledCourses } from '@/store/slices/enrollmentSlice';
 import { showSuccessNotification, showErrorNotification } from '@/store/slices/uiSlice';
 import Layout from '@/components/layout/Layout';
 import CourseCard from '@/components/ui/CourseCard';
@@ -26,6 +26,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(fetchCourses());
+    dispatch(fetchEnrolledCourses());
   }, [dispatch]);
 
   useEffect(() => {
@@ -46,30 +47,32 @@ export default function Home() {
 
   const handleEnroll = async (courseId: string) => {
     try {
+      const course = filteredCourses.find(c => c.id === courseId);
       dispatch(addEnrolledCourse(courseId));
       dispatch(showSuccessNotification({
-        title: 'Enrollment Successful',
-        message: 'You have been enrolled in the course successfully!',
+        title: 'Successfully Enrolled!',
+        message: `You are now enrolled in "${course?.title || 'the course'}". Check your My Courses page to get started.`,
       }));
     } catch {
       dispatch(showErrorNotification({
         title: 'Enrollment Failed',
-        message: 'Failed to enroll in the course. Please try again.',
+        message: 'Unable to enroll in the course. Please try again or contact support.',
       }));
     }
   };
 
   const handleUnenroll = async (courseId: string) => {
     try {
+      const course = filteredCourses.find(c => c.id === courseId);
       dispatch(removeEnrolledCourse(courseId));
       dispatch(showSuccessNotification({
-        title: 'Unenrollment Successful',
-        message: 'You have been unenrolled from the course.',
+        title: 'Successfully Unenrolled',
+        message: `You have been unenrolled from "${course?.title || 'the course'}". You can re-enroll anytime.`,
       }));
     } catch {
       dispatch(showErrorNotification({
         title: 'Unenrollment Failed',
-        message: 'Failed to unenroll from the course. Please try again.',
+        message: 'Unable to unenroll from the course. Please try again or contact support.',
       }));
     }
   };
@@ -83,7 +86,11 @@ export default function Home() {
     return (
       <Layout title="Employee Training Portal" description="Browse and enroll in training courses">
         <div className="text-center py-12">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Courses</h2>
           <p className="text-gray-600 mb-4">{coursesError}</p>
           <Button onClick={() => dispatch(fetchCourses())}>
@@ -170,7 +177,11 @@ export default function Home() {
         <>
           {filteredCourses.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-gray-400 text-6xl mb-4">📚</div>
+              <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">No Courses Found</h2>
               <p className="text-gray-600 mb-4">
                 {searchQuery || selectedCategory

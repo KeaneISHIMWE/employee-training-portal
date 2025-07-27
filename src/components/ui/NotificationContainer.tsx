@@ -18,14 +18,16 @@ const NotificationContainer: React.FC = () => {
   }
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2 max-w-sm">
-      {notifications.map((notification) => (
-        <NotificationToast
-          key={notification.id}
-          notification={notification}
-          onRemove={handleRemoveNotification}
-        />
-      ))}
+    <div className="fixed top-4 right-4 z-50 max-w-md">
+      {/* Show only the most recent notification to avoid stacking */}
+      {notifications.length > 0 && (
+        <div className="animate-in slide-in-from-right-full duration-300">
+          <NotificationToast
+            notification={notifications[notifications.length - 1]}
+            onRemove={handleRemoveNotification}
+          />
+        </div>
+      )}
     </div>
   );
 };
